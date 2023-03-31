@@ -1,33 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
+/* eslint-disable prettier/prettier */
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import Routes from './src/config/routes';
 
-
-
-
-const  App = () => {
- 
-
-  return (
-    <SafeAreaView>
-     
-    </SafeAreaView>
-  );
-}
-
+const App = () => {
+  return <Routes />;
+};
 
 export default App;
