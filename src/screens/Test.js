@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React, {useEffect} from 'react';
-import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
 import { ScrollView } from 'react-native';
+import {StyledText, StyledView} from '../styles/test';
 
 const Test = () => {
   const navigation = useNavigation();
@@ -10,7 +10,7 @@ const Test = () => {
   useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
-      headerShown: true,
+      headerShown: false,
     });
   }, [navigation]);
 
@@ -24,15 +24,5 @@ const Test = () => {
     </ScrollView>
   );
 };
-
-const StyledView = styled.View`
-  border: solid gold 3px;
-`;
-
-const StyledText = styled.Text`
-  font-size: 25px;
-  padding: 5px 0px;
-  color: blue;
-`;
 
 export default Test;
