@@ -20,6 +20,8 @@ const LiveScreen = () => {
 
   const [LiveFoot, setLiveFoot] = useState(null);
 
+  const [ErrorMessage, setErrorMessage] = useState('Aucun match en cours, revenez plus tard !');
+
   useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
@@ -32,16 +34,16 @@ const LiveScreen = () => {
   
     axios.get(apiUrl)
       .then(response => {
-        // if (response.data === null || response.data === undefined) {
-          
-        // } else {
-          
-        // }
-        setLiveFoot(response.data);
-        console.log(response.data, 'Resultat');
+        if (response.data.data === null || response.data.data === undefined) {
+          console.log("bonjour");
+        } else {
+          setLiveFoot(response.data.data);
+          console.log(response.data.data, 'Resultat');
+        }
       })
       .catch(err => console.log(err));
   }, []);
+  
   
 
   return (
@@ -51,7 +53,7 @@ const LiveScreen = () => {
         <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
         <StyledView>
           {LiveFoot === null || LiveFoot === undefined ? (
-            <TextM>Aucun match en cours, revenez plus tard !</TextM>
+            <TextM>{ErrorMessage}</TextM>
           ) : (
             <>
               <Container>
