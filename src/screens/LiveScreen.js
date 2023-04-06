@@ -11,6 +11,7 @@ import {
 import Header from '../components/Header';
 import Navbar from '../components/navbar';
 import ThemeToggle from '../components/ThemeToggle';
+import { TextM } from '../styles/LiveScreen';
 
 const LiveScreen = () => {
   const navigation = useNavigation();
