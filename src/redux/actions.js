@@ -9,6 +9,7 @@ export const setLanguage = language => dispatch => {
   });
 };
 
+
 export const FETCH_FIXTURES = 'FETCH_FIXTURES';
 
 export const fetchfixtures = () => {

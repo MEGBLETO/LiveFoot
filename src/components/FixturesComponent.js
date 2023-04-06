@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchfixtures} from '../redux/actions';
+import { useNavigation } from '@react-navigation/native';
 
 
 const FixtureItem = styled.View`
@@ -40,6 +41,7 @@ const Score = styled.Text`
 `;
 
 const FixturesComponent = () => {
+  const navigation = useNavigation()
   const dispatch = useDispatch();
   const fixtures = useSelector(state => state.fixturesReducer.fixtures);
 
@@ -49,8 +51,12 @@ const FixturesComponent = () => {
 
   console.log(fixtures);
 
+  // <FixtureItem onPress={()=> navigation.navigate('Details', {id: items.lineups[0].details.fixture_id})}>
+
+
   const renderItem = ({item}) => (
-    <FixtureItem>
+    <TouchableOpacity onPress={()=> navigation.navigate('Details', {id: item.lineups[0].details[0].fixture_id})}>
+    <FixtureItem >
       <TeamWrapper>
         <TeamLogo source={{uri: item.participants[0].image_path}} />
         <TeamName>{item.participants[0].name}</TeamName>
@@ -62,10 +68,11 @@ const FixturesComponent = () => {
         <TeamLogo source={{uri: item.participants[1].image_path}} />
       </TeamWrapper>
     </FixtureItem>
+    </TouchableOpacity>
   );
 
   return (
-    <FlatList
+    <FlatList 
       data={fixtures}
       keyExtractor={item => item.id.toString()}
       renderItem={renderItem}
