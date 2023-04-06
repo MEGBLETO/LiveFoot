@@ -9,7 +9,7 @@ import {
   PagecontainerWhite,
 } from '../styles/MainScreen.style';
 import BottomNavigation from '../components/BottomNavigation';
-import Header from '../components/Header';
+import Header from '../components/header';
 import notifee from '@notifee/react-native';
 
 const StyledScrollView = styled.ScrollView`
@@ -28,7 +28,7 @@ const MainPage = () => {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
-  const {t, i18n} = useTranslation()
+  const {t, i18n} = useTranslation();
   const {language} = useSelector(state => state.languageReducer);
   const fixtures = useSelector(state => state.fixtures);
   const loading = useSelector(state => state.loading);
@@ -76,7 +76,7 @@ const MainPage = () => {
     <PagecontainerWhite>
       <Header />
       <FixturesComponent />
-      <BottomNavigation />
+      <BottomNavigation home="yellow" teams="white" stats="white" live="white"/>
     </PagecontainerWhite>
   );
 };
