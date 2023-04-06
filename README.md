@@ -11,6 +11,7 @@ Première Date: 06/04/2023
 -setup de redux afin de rendre la state global
 -system de notification avec le package notifee
 -Dark et light mode
+-Notifications
 
 
 
@@ -18,7 +19,14 @@ Première Date: 06/04/2023
 Deuxieme Date: 20/04/2023
 
 -finalisation des differents ecrans 
--
+-ajouter un loader
+-le classement des équipes par compétition
+-les statistiques détaillées des matchs en live
+-visualiser les équipes et voir leurs statistiques
+-visionner un match en live (probabilité 60%)
+-possibilité de rechercher un match passé
+-un sélecteur qui permet d'afficher les matchs d'une période définie
+-ajout de publicité
 
 
 
