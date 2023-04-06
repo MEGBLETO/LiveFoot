@@ -22,12 +22,12 @@ const MenuItem = styled.TouchableOpacity`
   padding: 1px;
   position: absolute;
   right: 70px;
-  top: 20px;
+  top: 22px;
 `;
 
 const Image = styled.Image`
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     background-color: antiquewhite;
     border-radius: 15px;
 `;

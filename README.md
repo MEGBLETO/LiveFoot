@@ -18,7 +18,12 @@ Première Date: 06/04/2023
 Deuxieme Date: 20/04/2023
 
 -finalisation des differents ecrans 
--
+-le classement des équipes par compétition
+-les statistiques détaillées des matchs en live
+-visualiser les équipes et voir leurs statistiques
+-visionner un match en live (probabilité 60%)
+-possibilité de rechercher un match passé
+-un sélecteur qui permet d'afficher les matchs d'une période définie
 
 
 
