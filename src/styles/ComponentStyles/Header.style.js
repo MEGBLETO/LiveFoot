@@ -51,3 +51,5 @@ export const MenuItem = styled.TouchableOpacity`
 `;
 
 export const View2 = styled.View``;
+
+export const View = styled.View``;

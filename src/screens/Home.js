@@ -65,44 +65,6 @@ const Home = () => {
             </Container>
           </Container>
         </StyledView>
-        {/* <StyledText>Test</StyledText> */}
-        {/* <StyledView>
-          <Container>
-            <Container>
-              <Image2 source={require('../images/ballon-foot.png')}/>
-              <Text2>   France . Ligue 1 </Text2>
-            </Container>
-            <Container>
-              <Image2 source={require('../images/classement.png')}/>
-            </Container>
-          </Container>
-          <Container>
-            <Container>
-              <Text3>27' 1ère mi-temps </Text3>
-            </Container>
-            <Container>
-              <Image2 source={require('../images/streaming.png')}/>
-            </Container>
-          </Container>
-          <Container>
-            <Container>
-              <Image source={require('../images/om.png')}/>
-              <StyledText>   Olympique Marseille</StyledText>
-            </Container>
-            <Container>
-              <Text4>1</Text4>
-            </Container>
-          </Container>
-          <Container>
-            <Container>
-              <Image source={require('../images/psg.png')}/>
-              <StyledText>   Paris Saint Germain</StyledText>
-            </Container>
-            <Container>
-              <Text4>2</Text4>
-            </Container>
-          </Container>
-        </StyledView> */}
         <Navbar/>
       </StyledView2>
     </ThemeProvider>

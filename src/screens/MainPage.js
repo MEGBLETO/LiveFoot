@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
@@ -9,7 +8,7 @@ import {
   PagecontainerWhite,
 } from '../styles/MainScreen.style';
 import BottomNavigation from '../components/BottomNavigation';
-import Header from '../components/Header';
+import Header from '../components/header';
 import notifee from '@notifee/react-native';
 
 const StyledScrollView = styled.ScrollView`
