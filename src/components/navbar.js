@@ -30,7 +30,7 @@ const Navbar = () => {
         </MenuItem>
         <MenuItem onPress={() => navigation.navigate('Home')}>
             <Image source={require('../images/stat.png')}/>
-            <Text>Ranking</Text>
+            <Text>Classement</Text>
         </MenuItem>
       </View1>
   );
