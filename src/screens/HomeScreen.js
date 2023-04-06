@@ -11,13 +11,27 @@ import {
 } from '../styles/HomeScreen.styles';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import bgimage from '../assets/bg.jpg';
+import { useTranslation } from 'react-i18next';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLanguage } from '../redux/actions';
+
 
 
 
 
 const HomeScreen = () => {
+  const {t, i18n} = useTranslation()
+  const {language} = useSelector(state => state.languageReducer)
+  // const dispatch = useDispatch()
 
   const navigation = useNavigation();
+
+
+
+  // useEffect(()=>{
+  //   i18n.changeLanguage(language)
+
+  // },[language])
 
 
   useEffect(() => {
@@ -33,7 +47,7 @@ const HomeScreen = () => {
       <StyledImageBackground source={bgimage}>
         <MessageContainer>
           <StyledWelcomeText>
-          Live football ! Stay updated with the latest scores, news, and highlights. Never miss a game again!
+            {t('welcome.message')}
           </StyledWelcomeText>
         </MessageContainer>
 

@@ -3,15 +3,38 @@ import {useNavigation} from '@react-navigation/native';
 import ThemeProvider from './ThemeProvider';
 import ThemeToggle from './ThemeToggle';
 import {
-  StyledText, View, Image, Imagelogo, MenuItem
-} from '../styles/header';
+  StyledText,
+  Image,
+  Imagelogo,
+  MenuItem,
+  HeaderContainer,
+  StyledMenuIcon,
+  StyledGlobeIcon,
+} from '../styles/ComponentStyles/Header.style';
+
+import {useTranslation} from 'react-i18next';
+import {useSelector, useDispatch} from 'react-redux';
+import {setLanguage} from '../redux/actions';
 
 const Header = () => {
   const navigation = useNavigation();
+  const {t, i18n} = useTranslation();
+  const {language} = useSelector(state => state.languageReducer);
+  const dispatch = useDispatch();
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+  const upDateLanguage = () => {
+    if (language === 'fr') {
+      dispatch(setLanguage('en'));
+      i18n.changeLanguage(language);
+      console.log(language);
+
+    } else {
+      dispatch(setLanguage('fr'));
+      i18n.changeLanguage(language);
+      console.log(language);
+    }
+  };
 
   useEffect(() => {
     navigation.setOptions({
@@ -21,15 +44,17 @@ const Header = () => {
   }, [navigation]);
 
   return (
-    <ThemeProvider isDarkMode={isDarkMode}>
-      <View>
-        <Image source={require('../images/menu2.png')} />
-        <MenuItem onPress={() => navigation.navigate('Home')} >
-          <Imagelogo source={require('../images/logo.png')} />
-        </MenuItem>
-        <Image source={require('../images/langues.png')} />
-      </View>
-    </ThemeProvider>
+    <HeaderContainer>
+      <StyledMenuIcon size={30} color="white" />
+      <MenuItem onPress={() => navigation.navigate('Home')}>
+        <Imagelogo source={require('../images/logo.png')} />
+      </MenuItem>
+      <StyledGlobeIcon
+        onPress={() => upDateLanguage()}
+        size={30}
+        color="white"
+      />
+    </HeaderContainer>
   );
 };
 

@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import {View, Text, ScrollView} from 'react-native';
+
 
 export const StyledView = styled.View`
   border: solid red 3px;
@@ -19,5 +21,12 @@ export const StyledText = styled.Text`
   color: green;
 `;
 
+
+
+export const StyledScrollView = styled.ScrollView`
+position: relative;
+z-index: -1;
+height: 100%;
+`;
 
 
