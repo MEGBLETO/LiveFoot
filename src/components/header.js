@@ -4,6 +4,7 @@ import ThemeProvider from './ThemeProvider';
 import ThemeToggle from './ThemeToggle';
 import {
   StyledText,
+  StyledTextLangue,
   Image,
   Imagelogo,
   MenuItem,
@@ -22,13 +23,11 @@ const Header = () => {
   const {language} = useSelector(state => state.languageReducer);
   const dispatch = useDispatch();
 
-
   const upDateLanguage = () => {
     if (language === 'fr') {
       dispatch(setLanguage('en'));
       i18n.changeLanguage(language);
       console.log(language);
-
     } else {
       dispatch(setLanguage('fr'));
       i18n.changeLanguage(language);
@@ -49,11 +48,9 @@ const Header = () => {
       <MenuItem onPress={() => navigation.navigate('Home')}>
         <Imagelogo source={require('../images/logo.png')} />
       </MenuItem>
-      <StyledGlobeIcon
-        onPress={() => upDateLanguage()}
-        size={30}
-        color="white"
-      />
+      <StyledTextLangue onPress={() => upDateLanguage()}>
+        {language}
+      </StyledTextLangue>
     </HeaderContainer>
   );
 };

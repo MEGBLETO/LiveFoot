@@ -1,10 +1,7 @@
-import React from "react";
-import { createRoot } from 'react-dom/client';
-import i18n from "i18next";
-import { useTranslation, initReactI18next } from "react-i18next";
-
-
-
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import i18n from 'i18next';
+import {useTranslation, initReactI18next} from 'react-i18next';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -17,37 +14,63 @@ i18n
     resources: {
       en: {
         translation: {
-          welcome:  {
-            message: "Live football ! Stay updated with the latest scores, news, and highlights. Never miss a game again!"
+          welcome: {
+            message:
+              'Live football ! Stay updated with the latest scores, news, and highlights. Never miss a game again!',
           },
-          langue:{
-            message: "You have just switched to english"
-          }
-        }
+          langue: {
+            message: 'You have just switched to english',
+          },
+          home: {
+            message: 'Home',
+          },
+          recherche:{
+            message: "Search"
+          },
+          teams: {
+            message: 'teams',
+          },
+          ranking: {
+            message: 'Rankings',
+          },
+          live: {
+            message: 'Live',
+          },
+        },
       },
       fr: {
         translation: {
-          welcome:  {
-            message: "Football en direct ! Restez à jour avec les derniers scores, les actualités et les moments forts. Ne manquez plus jamais un match !"
+          welcome: {
+            message:
+              'Football en direct ! Restez à jour avec les derniers scores, les actualités et les moments forts. Ne manquez plus jamais un match !',
           },
-          langue:{
-            message: "Vous aviez selectionner le francais"
-          }
-
-
-        }
-      }
-      
+          langue: {
+            message: 'Vous aviez selectionner le francais',
+          },
+          home: {
+            message: 'Accueil',
+          },
+          recherche:{
+            message: "Recherche"
+          },
+          teams: {
+            message: 'Equipe',
+          },
+          ranking: {
+            message: 'Classements',
+          },
+          live: {
+            message: 'Direct',
+          },
+        },
+      },
     },
-    lng: "en", // if you're using a language detector, do not define the lng option
-    fallbackLng: "en",
+    lng: 'en', // if you're using a language detector, do not define the lng option
+    fallbackLng: 'en',
 
     interpolation: {
-      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
-    }
+      escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    },
   });
 
-
-
-
-  export default i18n;
+export default i18n;

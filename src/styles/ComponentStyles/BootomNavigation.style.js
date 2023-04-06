@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import { TrophyIcon, CameraIcon, VideoCameraIcon, ChartBarIcon, UserGroupIcon, MegaphoneIcon, Bars2Icon, Bars3BottomLeftIcon } from 'react-native-heroicons/solid';
-import { MenuAlt1Outline, MenuOutline } from 'heroicons-react';
+import { TrophyIcon, CameraIcon, VideoCameraIcon, ChartBarIcon, UserGroupIcon, MegaphoneIcon, Bars2Icon, Bars3BottomLeftIcon, MagnifyingGlassCircleIcon } from 'react-native-heroicons/solid';
+import { LockOpen, MenuAlt1Outline, MenuOutline } from 'heroicons-react';
 
 
 export const StyledView = styled.View`
@@ -36,11 +36,6 @@ export const StyledTrophyIcon = styled(TrophyIcon)`
   color: ${({ color }) => color};
 `;
 
-export const StyledMenuIcon = styled(Bars3BottomLeftIcon)`
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
-  color: ${({ color }) => color};
-`;
 
 
 
@@ -64,7 +59,7 @@ export const StyledUserGroupIcon = styled(UserGroupIcon)`
   color: ${({ color }) => color};
 `;
 
-export const StyledMegapphone = styled(MegaphoneIcon)`
+export const StyledMegapphone = styled(MagnifyingGlassCircleIcon)`
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
   color: ${({ color }) => color};

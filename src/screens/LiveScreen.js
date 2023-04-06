@@ -7,7 +7,7 @@ import {
   StyledText, StyledView, StyledView2, Text2, Text3, Text4,
   Image, Image2, Container
 } from '../styles/home';
-import Header from '../components/header';
+import Header from '../components/Header';
 import Navbar from '../components/navbar';
 import ThemeToggle from '../components/ThemeToggle';
 

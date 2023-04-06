@@ -8,7 +8,7 @@ import {
   PagecontainerWhite,
 } from '../styles/MainScreen.style';
 import BottomNavigation from '../components/BottomNavigation';
-import Header from '../components/header';
+import Header from '../components/Header';
 import notifee from '@notifee/react-native';
 
 const StyledScrollView = styled.ScrollView`

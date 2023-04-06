@@ -22,6 +22,14 @@ export const StyledText = styled.Text`
   color: black;
 `;
 
+
+
+export const StyledTextLangue = styled.Text`
+  font-size: 25px;
+  padding: 5px 0px;
+  color: white;
+`;
+
 export const Image = styled.Image`
   width: 40px;
   height: 40px;
