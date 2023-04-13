@@ -1,15 +1,16 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
-import {ScrollView} from 'react-native';
-import {
-  StyledView,
-  StyledText,
-  PagecontainerWhite,
-} from '../styles/MainScreen.style';
+import Header from '../components/header';
+import {FlatList, Text} from 'react-native';
+import {StyledView, StyledView2} from '../styles/home';
 import BottomNavigation from '../components/BottomNavigation';
-import Header from '../components/Header';
 import notifee from '@notifee/react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {useTranslation} from 'react-i18next';
+import ThemeProvider from '../components/ThemeProvider';
+import MatchCard from '../components/matchCard';
+import {fetchfixtures} from '../redux/actions';
 
 const StyledScrollView = styled.ScrollView`
   position: relative;
@@ -18,18 +19,14 @@ const StyledScrollView = styled.ScrollView`
   background-color: #fff;
 `;
 
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchfixtures} from '../redux/actions';
-import FixturesComponent from '../components/FixturesComponent';
-import {useTranslation} from 'react-i18next';
-
 const MainPage = () => {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
-  const {t, i18n} = useTranslation()
+  const {isDarkMode} = useSelector(state => state.themeReducer);
+  const {t, i18n} = useTranslation();
   const {language} = useSelector(state => state.languageReducer);
-  const fixtures = useSelector(state => state.fixtures);
+  const {fixtures} = useSelector(state => state.fixturesReducer);
   const loading = useSelector(state => state.loading);
 
   async function onDisplayNotification() {
@@ -44,7 +41,6 @@ const MainPage = () => {
 
     // Display a notification
     await notifee.displayNotification({
-
       title: 'LiveFoot',
       body: `${t('welcome.message')}`,
       android: {
@@ -62,7 +58,10 @@ const MainPage = () => {
     onDisplayNotification();
   }, [language]);
 
-  // console.log(fixtures)
+  useEffect(() => {
+    dispatch(fetchfixtures());
+  }, []);
+  console.log(fixtures);
 
   useEffect(() => {
     navigation.setOptions({
@@ -72,11 +71,24 @@ const MainPage = () => {
   }, [navigation]);
 
   return (
-    <PagecontainerWhite>
+    // <PagecontainerWhite>
+    //   <Header />
+    //   <FixturesComponent />
+    //   <BottomNavigation />
+    // </PagecontainerWhite>
+    <ThemeProvider isDarkMode={isDarkMode}>
       <Header />
-      <FixturesComponent />
-      <BottomNavigation />
-    </PagecontainerWhite>
+      <StyledView2>
+        <StyledView>
+          <FlatList
+            data={fixtures}
+            renderItem={({item}) => <MatchCard data={item} />}
+            keyExtractor={item => item.id}
+          />
+        </StyledView>
+        <BottomNavigation />
+      </StyledView2>
+    </ThemeProvider>
   );
 };
 

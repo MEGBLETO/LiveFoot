@@ -1,37 +1,36 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import ThemeProvider from './ThemeProvider';
-import ThemeToggle from './ThemeToggle';
 import {
-  StyledText,
   StyledTextLangue,
-  Image,
   Imagelogo,
   MenuItem,
   HeaderContainer,
   StyledMenuIcon,
-  StyledGlobeIcon,
 } from '../styles/ComponentStyles/Header.style';
 
 import {useTranslation} from 'react-i18next';
 import {useSelector, useDispatch} from 'react-redux';
-import {setLanguage} from '../redux/actions';
+import {setLanguage, setThemeMode} from '../redux/actions';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const navigation = useNavigation();
   const {t, i18n} = useTranslation();
   const {language} = useSelector(state => state.languageReducer);
+  const {isDarkMode} = useSelector(state => state.themeReducer);
   const dispatch = useDispatch();
 
+  const toggleTheme = () => {
+    dispatch(setThemeMode(!isDarkMode));
+  };
+
   const upDateLanguage = () => {
-    if (language === 'fr') {
-      dispatch(setLanguage('en'));
+    if (language === 'Fr') {
+      dispatch(setLanguage('En'));
       i18n.changeLanguage(language);
-      console.log(language);
     } else {
-      dispatch(setLanguage('fr'));
+      dispatch(setLanguage('Fr'));
       i18n.changeLanguage(language);
-      console.log(language);
     }
   };
 
@@ -45,9 +44,10 @@ const Header = () => {
   return (
     <HeaderContainer>
       <StyledMenuIcon size={30} color="white" />
-      <MenuItem onPress={() => navigation.navigate('Home')}>
+      <MenuItem onPress={() => navigation.navigate('Main')}>
         <Imagelogo source={require('../images/logo.png')} />
       </MenuItem>
+      <ThemeToggle isDarkMode={isDarkMode} onToggle={() => toggleTheme()} />
       <StyledTextLangue onPress={() => upDateLanguage()}>
         {language}
       </StyledTextLangue>

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export const SET_APP_LANGUAGE = 'SET_APP_LANGUAGE';
+export const SET_APP_THEME_MODE = 'SET_APP_THEME_MODE';
+export const FETCH_FIXTURES = 'FETCH_FIXTURES';
 
 export const setLanguage = language => dispatch => {
   dispatch({
@@ -9,21 +11,25 @@ export const setLanguage = language => dispatch => {
   });
 };
 
-
-export const FETCH_FIXTURES = 'FETCH_FIXTURES';
+export const setThemeMode = themeMode => dispatch => {
+  dispatch({
+    type: SET_APP_THEME_MODE,
+    payload: themeMode,
+  });
+};
 
 export const fetchfixtures = () => {
   return async dispatch => {
     try {
       const res = await axios.get(
-        `https://api.sportmonks.com/v3/football/fixtures/between/2023-01-01/2023-03-31?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=statistics;participants;lineups.type;lineups.position;lineups.details;lineups;events`
+        'https://api.sportmonks.com/v3/football/fixtures/between/2023-01-01/2023-03-31?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=statistics;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events',
       );
       dispatch({
         type: FETCH_FIXTURES,
-        payload: res.data.data
+        payload: res.data.data,
       });
     } catch (error) {
-      console.log(error, "here");
+      console.log(error, 'here');
     }
   };
 };

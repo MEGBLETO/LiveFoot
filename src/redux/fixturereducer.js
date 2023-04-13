@@ -1,14 +1,9 @@
-import { FETCH_FIXTURES } from "./actions";
-
-
-
+import {FETCH_FIXTURES} from './actions';
 
 const initialState = {
   fixtures: [],
   loading: false,
 };
-
-
 
 const fixturesReducer = (state = initialState, action) => {
   switch (action.type) {

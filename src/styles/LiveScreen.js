@@ -41,13 +41,13 @@ export const Text2 = styled.Text`
 
 export const Text3 = styled.Text`
   font-size: 20px;
-  color: #3498DB;
+  color: #3498db;
 `;
 
 export const TextM = styled.Text`
   font-size: 30px;
-  color: #3498DB;
-  align-self: center;
+  color: #3498db;
+  text-align: center;
 `;
 
 export const Text4 = styled.Text`
@@ -55,7 +55,7 @@ export const Text4 = styled.Text`
   color: ${props => props.theme.textColor};
   background-color: ${props => props.theme.backgroundColor2};
   padding: 1px 3px 5px 12px;
-  border: solid  2px ${props => props.theme.textColor};
+  border: solid 2px ${props => props.theme.textColor};
   border-radius: 15px;
   width: 35px;
   height: 30px;
