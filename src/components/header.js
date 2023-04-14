@@ -27,10 +27,10 @@ const Header = () => {
   const upDateLanguage = () => {
     if (language === 'Fr') {
       dispatch(setLanguage('En'));
-      i18n.changeLanguage(language);
+      i18n.changeLanguage('fr');
     } else {
       dispatch(setLanguage('Fr'));
-      i18n.changeLanguage(language);
+      i18n.changeLanguage('en');
     }
   };
 
