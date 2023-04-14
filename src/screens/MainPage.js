@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
@@ -60,7 +61,7 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(fetchfixtures());
-  }, []);
+  }, [dispatch]);
   console.log(fixtures);
 
   useEffect(() => {
@@ -86,7 +87,12 @@ const MainPage = () => {
             keyExtractor={item => item.id}
           />
         </StyledView>
-        <BottomNavigation />
+        <BottomNavigation
+          main="yellow"
+          teams="white"
+          stats="white"
+          live="white"
+        />
       </StyledView2>
     </ThemeProvider>
   );

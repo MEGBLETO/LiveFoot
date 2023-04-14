@@ -11,7 +11,7 @@ export const CardContainer = styled.View`
   margin-bottom: 10px;
   border: solid gray 1px;
   border-radius: 8px;
-  padding: 2px;
+  padding: 10px 2px;
   background-color: ${props => props.theme.backgroundColor2};
 `;
 

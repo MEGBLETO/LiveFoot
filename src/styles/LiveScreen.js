@@ -46,7 +46,7 @@ export const Text3 = styled.Text`
 
 export const TextM = styled.Text`
   font-size: 30px;
-  color: #3498db;
+  color: ${props => props.theme.textColor};
   text-align: center;
 `;
 

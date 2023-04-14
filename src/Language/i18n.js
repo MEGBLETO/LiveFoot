@@ -1,3 +1,6 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 import i18n from 'i18next';
@@ -36,6 +39,24 @@ i18n
           live: {
             message: 'Live',
           },
+          playDateToday: {
+            message: `Today at`
+          },
+          playedDateMinusOneDay: {
+            message: `Yesterday at`
+          },
+          playedDateMinusTwoDay: {
+            message: `Day before yesterday at`
+          },
+          playDatePlusOneDay: {
+            message: `Tomorrow at`
+          },
+          playDatePlusTwoDay: {
+            message: `Day after tomorrow at`
+          },
+          noLiveData: {
+            message: `No matches in progress, come back later!`
+          }
         },
       },
       fr: {
@@ -62,6 +83,24 @@ i18n
           live: {
             message: 'Direct',
           },
+          playDateToday: {
+            message: `Aujourd'hui à`
+          },
+          playedDateMinusOneDay: {
+            message: `Hier à`
+          },
+          playedDateMinusTwoDay: {
+            message: `Avant-hier à`
+          },
+          playDatePlusOneDay: {
+            message: `Demain à`
+          },
+          playDatePlusTwoDay: {
+            message: `Apres-demain à`
+          },
+          noLiveData: {
+            message: `Aucun match en cours, revenez plus tard !`
+          }
         },
       },
     },

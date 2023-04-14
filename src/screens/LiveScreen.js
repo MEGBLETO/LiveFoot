@@ -9,10 +9,12 @@ import {useSelector, useDispatch} from 'react-redux';
 import {TextM} from '../styles/LiveScreen';
 import MatchCard from '../components/matchCard';
 import {FlatList} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 const LiveScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const {t, i18n} = useTranslation();
 
   const {isDarkMode} = useSelector(state => state.themeReducer);
   const [LiveFoot, setLiveFoot] = useState(null);
@@ -21,8 +23,12 @@ const LiveScreen = () => {
     new Date(new Date().setDate(startDate.getDate() + 1)),
   );
   const [ErrorMessage, setErrorMessage] = useState(
-    'Aucun match en cours, revenez plus tard !',
+    `${t('noLiveData.message')}`,
   );
+
+  useEffect(() => {
+    setErrorMessage(`${t('noLiveData.message')}`);
+  }, [t]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -34,7 +40,7 @@ const LiveScreen = () => {
   useEffect(() => {
     let start = formatDate(startDate);
     let end = formatDate(endDate);
-    const apiUrl = `https://api.sportmonks.com/v3/football/fixtures/between/${start}/${end}?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=statistics;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events`;
+    const apiUrl = `https://api.sportmonks.com/v3/football/fixtures/between/${start}/${end}?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=statistics;statistics.type;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events;events.type;state;events.participant`;
     // 'https://api.sportmonks.com/v3/football/livescores/inplay?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py';
 
     axios
@@ -72,7 +78,12 @@ const LiveScreen = () => {
             />
           )}
         </StyledView>
-        <BottomNavigation />
+        <BottomNavigation
+          main="white"
+          teams="white"
+          stats="white"
+          live="yellow"
+        />
       </StyledView2>
     </ThemeProvider>
   );

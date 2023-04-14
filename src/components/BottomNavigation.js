@@ -25,7 +25,7 @@ const TextDet = styled.Text`
   color: white;
 `;
 
-const BottomNavigation = () => {
+const BottomNavigation = ({main, teams, stats, live}) => {
   const navigation = useNavigation();
   const {t, i18n} = useTranslation();
 
@@ -36,11 +36,11 @@ const BottomNavigation = () => {
           <StyledTrophyIcon
             onPress={() => navigation.navigate('Main')}
             size={30}
-            color="yellow"
+            color={main}
           />
           <TextDet> {t('home.message')}</TextDet>
         </Wrapper>
-
+        {/*
         <Wrapper>
           <StyledMegapphone
             onPress={() => navigation.navigate('Main')}
@@ -48,13 +48,13 @@ const BottomNavigation = () => {
             color="white"
           />
           <TextDet> {t('recherche.message')}</TextDet>
-        </Wrapper>
+        </Wrapper> */}
 
         <Wrapper>
           <StyledUserGroupIcon
             onPress={() => navigation.navigate('Teams')}
             size={30}
-            color="white"
+            color={teams}
           />
           <TextDet>{t('teams.message')}</TextDet>
         </Wrapper>
@@ -63,7 +63,7 @@ const BottomNavigation = () => {
           <StyledStatsIcon
             onPress={() => navigation.navigate('Stats')}
             size={30}
-            color="white"
+            color={stats}
           />
           <TextDet>{t('ranking.message')}</TextDet>
         </Wrapper>
@@ -72,7 +72,7 @@ const BottomNavigation = () => {
           <StyledCameraIcon
             onPress={() => navigation.navigate('Live')}
             size={30}
-            color="white"
+            color={live}
           />
           <TextDet>{t('live.message')}</TextDet>
         </Wrapper>

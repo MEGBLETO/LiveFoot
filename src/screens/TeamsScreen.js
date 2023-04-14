@@ -1,15 +1,21 @@
 import {View, Text} from 'react-native';
 import React, {useEffect} from 'react';
-import {PagecontainerWhite} from '../styles/HomeScreen.styles';
 import BottomNavigation from '../components/BottomNavigation';
-import {ThemeProvider, useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import {StyledView2} from '../styles/home';
+import ThemeProvider from '../components/ThemeProvider';
 import Header from '../components/header';
 import {useDispatch, useSelector} from 'react-redux';
-import {StyledView2} from '../styles/home';
+import {useTranslation} from 'react-i18next';
 
 const TeamsScreen = () => {
   const navigation = useNavigation();
   const {isDarkMode} = useSelector(state => state.themeReducer);
+
+  const dispatch = useDispatch();
+  const {isDarkMode} = useSelector(state => state.themeReducer);
+  const {t, i18n} = useTranslation();
+  const {language} = useSelector(state => state.languageReducer);
 
   useEffect(() => {
     navigation.setOptions({
@@ -21,9 +27,13 @@ const TeamsScreen = () => {
   return (
     <ThemeProvider isDarkMode={isDarkMode}>
       <Header />
-      <StyledView2>
-        <BottomNavigation />
-      </StyledView2>
+      <StyledView2 />
+      <BottomNavigation
+        main="white"
+        teams="yellow"
+        stats="white"
+        live="white"
+      />
     </ThemeProvider>
   );
 };
