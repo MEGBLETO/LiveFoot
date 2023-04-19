@@ -19,7 +19,6 @@ const id = route.params.id
 const  getFixtureDetails = async() =>{
   try {
   const res = await axios.get(`https://api.sportmonks.com/v3/football/fixtures/${id}?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=scores;participants;statistics`)
-  console.log(res.data.data, "here")
   } catch (error) {
     
   }

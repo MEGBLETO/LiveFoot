@@ -22,7 +22,7 @@ export const fetchfixtures = () => {
   return async dispatch => {
     try {
       const res = await axios.get(
-        'https://api.sportmonks.com/v3/football/fixtures/between/2023-04-10/2023-04-16?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=statistics;statistics.type;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events;events.type;state;events.participant',
+        'https://api.sportmonks.com/v3/football/fixtures/between/2023-04-10/2023-04-16?api_token=8hLDCAjFKrGgNrCuyeGxfsie7nXX4jaW8hCrVi75165ef2V5c1bhG2lqhO18&include=statistics;statistics.type;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events;events.type;state;events.participant',
       );
       dispatch({
         type: FETCH_FIXTURES,

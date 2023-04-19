@@ -10,6 +10,7 @@ import LiveScreen from '../screens/LiveScreen';
 import TeamsScreen from '../screens/TeamsScreen';
 import StatsScrenss from '../screens/StatsScrenss';
 import DetailsScreens from '../screens/DetailsScreens';
+import PlayersScreens from '../screens/PlayersScreens';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ const Routes = () => {
         <Stack.Screen name="Teams" component={TeamsScreen} />
         <Stack.Screen name="Stats" component={StatsScrenss} />
         <Stack.Screen name="Details" component={DetailsScreens} />
+        <Stack.Screen name="players" component={PlayersScreens} />
       </Stack.Navigator>
     </NavigationContainer>
   );

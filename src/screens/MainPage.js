@@ -62,7 +62,6 @@ const MainPage = () => {
   useEffect(() => {
     dispatch(fetchfixtures());
   }, [dispatch]);
-  console.log(fixtures);
 
   useEffect(() => {
     navigation.setOptions({
