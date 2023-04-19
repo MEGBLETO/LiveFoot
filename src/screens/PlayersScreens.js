@@ -83,6 +83,7 @@ export default function PlayersScreens() {
             <Card>
               <CardImage source={{uri: card?.image_path}} />
               <CardText>{card?.common_name}</CardText>
+              <CustomText>{card?.date_of_birth}</CustomText>
             </Card>
           )}
           onSwiped={cardIndex => console.log('Card swiped: ', cardIndex)}
@@ -127,5 +128,11 @@ const CardImage = styled(Image)`
 
 const CardText = styled.Text`
   font-size: 24px;
+  margin-top: 16px;
+`;
+
+
+const CustomText = styled.Text`
+  font-size: 10px;
   margin-top: 16px;
 `;
