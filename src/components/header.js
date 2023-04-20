@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
+import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {
-  StyledTextLangue,
   Imagelogo,
   MenuItem,
   HeaderContainer,
   StyledMenuIcon,
+  Imagelangue,
 } from '../styles/ComponentStyles/Header.style';
 
 import {useTranslation} from 'react-i18next';
@@ -24,17 +25,22 @@ const Header = () => {
     dispatch(setThemeMode(!isDarkMode));
   };
 
-  const upDateLanguage = () => {
-    if (language === 'fr') {
-      dispatch(setLanguage('en'));
-      i18n.changeLanguage(language);
-      console.log(language);
-    } else {
-      dispatch(setLanguage('fr'));
-      i18n.changeLanguage(language);
-      console.log(language);
-    }
-  };
+const upDateLanguage = () => {
+  if (language === 'fr') {
+    dispatch(setLanguage('en'));
+    i18n.changeLanguage(language);
+    console.log(language);
+  } else {
+    dispatch(setLanguage('fr'));
+    i18n.changeLanguage(language);
+    console.log(language);
+  }
+};
+
+const buttonImage = language === 'fr'
+  ? require('../images/france.png')
+  : require('../images/royaume-uni.png');
+
 
   useEffect(() => {
     navigation.setOptions({
@@ -50,9 +56,9 @@ const Header = () => {
         <Imagelogo source={require('../images/logo.png')} />
       </MenuItem>
       <ThemeToggle isDarkMode={isDarkMode} onToggle={() => toggleTheme()} />
-      <StyledTextLangue onPress={() => upDateLanguage()}>
-        {language}
-      </StyledTextLangue>
+      <TouchableOpacity onPress={upDateLanguage}>
+        <Imagelangue onPress={upDateLanguage} source={buttonImage} />
+      </TouchableOpacity>
     </HeaderContainer>
   );
 };

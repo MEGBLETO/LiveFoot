@@ -52,6 +52,13 @@ export const Imagelogo = styled.Image`
   margin-top: 5px;
 `;
 
+export const Imagelangue = styled.Image`
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  margin-top: 10px;
+`;
+
 export const MenuItem = styled.TouchableOpacity`
   padding: 1px;
   position: relative;
