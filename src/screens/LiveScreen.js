@@ -10,6 +10,7 @@ import {TextM} from '../styles/LiveScreen';
 import MatchCard from '../components/matchCard';
 import {FlatList} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import {formatDate} from '../services/formatDate';
 
 const LiveScreen = () => {
   const navigation = useNavigation();
@@ -17,11 +18,11 @@ const LiveScreen = () => {
   const {t, i18n} = useTranslation();
 
   const {isDarkMode} = useSelector(state => state.themeReducer);
-  const [LiveFoot, setLiveFoot] = useState(null);
+  const [LiveFoot, setLiveFoot] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(
-    new Date(new Date().setDate(startDate.getDate() + 1)),
-  );
+  // const [endDate, setEndDate] = useState(
+  //   new Date(new Date().setDate(startDate.getDate() + 1)),
+  // );
   const [ErrorMessage, setErrorMessage] = useState(
     `${t('noLiveData.message')}`,
   );
@@ -38,29 +39,34 @@ const LiveScreen = () => {
   }, [navigation]);
 
   useEffect(() => {
-    let start = formatDate(startDate);
-    let end = formatDate(endDate);
-    const apiUrl = `https://api.sportmonks.com/v3/football/fixtures/between/${start}/${end}?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=statistics;statistics.type;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events;events.type;state;events.participant`;
-    // 'https://api.sportmonks.com/v3/football/livescores/inplay?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py';
+    fetchData();
+    // const interval2 = setInterval(() => {
+    //   console.log('fetch');
+    //   fetchData();
+    // }, 7000);
+
+    // return () => clearInterval(interval2);
+  }, []);
+
+  const fetchData = () => {
+    // let start = formatDate(startDate);
+    // let end = formatDate(startDate);
+    // const apiUrl = `https://api.sportmonks.com/v3/football/fixtures/between/${start}/${end}?api_token=8hLDCAjFKrGgNrCuyeGxfsie7nXX4jaW8hCrVi75165ef2V5c1bhG2lqhO18&include=statistics;statistics.type;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events;events.type;state;events.participant`;
+    const apiUrl =
+      'https://api.sportmonks.com/v3/football/livescores/inplay?api_token=8hLDCAjFKrGgNrCuyeGxfsie7nXX4jaW8hCrVi75165ef2V5c1bhG2lqhO18&include=statistics;statistics.type;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events;events.type;state;events.participant';
 
     axios
       .get(apiUrl)
       .then(response => {
         if (response.data.data === null || response.data.data === undefined) {
         } else {
+          // const filtre = response.data.data.sort(
+          //   (a, b) => a.starting_at_timestamp - b.starting_at_timestamp,
+          // );
           setLiveFoot(response.data.data);
         }
       })
       .catch(err => console.log(err));
-  }, [startDate, endDate]);
-
-  const formatDate = date => {
-    let dateMonth =
-      date.getMonth() < 8 ? `0${date.getMonth()}` : date.getMonth();
-
-    let dateDay = date.getDate() < 9 ? `0${date.getDate()}` : date.getDate();
-
-    return `${date.getFullYear()}-${dateMonth}-${dateDay}`;
   };
 
   return (
@@ -68,15 +74,22 @@ const LiveScreen = () => {
       <Header />
       <StyledView2>
         <StyledView>
-          {LiveFoot === null || LiveFoot === undefined ? (
+          <FlatList
+            data={LiveFoot}
+            renderItem={({item}) => <MatchCard data={item} />}
+            keyExtractor={item => item.id}
+            ListEmptyComponent={() => <TextM>{ErrorMessage}</TextM>}
+          />
+          {/* {LiveFoot.length === 0 ? (
             <TextM>{ErrorMessage}</TextM>
           ) : (
             <FlatList
               data={LiveFoot}
               renderItem={({item}) => <MatchCard data={item} />}
               keyExtractor={item => item.id}
+              ListEmptyComponent={() => <TextM>{ErrorMessage}</TextM>}
             />
-          )}
+          )} */}
         </StyledView>
         <BottomNavigation
           main="white"

@@ -28,11 +28,9 @@ const Header = () => {
     if (language === 'fr') {
       dispatch(setLanguage('en'));
       i18n.changeLanguage(language);
-      console.log(language);
     } else {
       dispatch(setLanguage('fr'));
       i18n.changeLanguage(language);
-      console.log(language);
     }
   };
 

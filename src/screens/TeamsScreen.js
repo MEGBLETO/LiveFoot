@@ -13,7 +13,6 @@ const TeamsScreen = () => {
   const {isDarkMode} = useSelector(state => state.themeReducer);
 
   const dispatch = useDispatch();
-  const {isDarkMode} = useSelector(state => state.themeReducer);
   const {t, i18n} = useTranslation();
   const {language} = useSelector(state => state.languageReducer);
 
