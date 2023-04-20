@@ -56,6 +56,49 @@ i18n
           },
           noLiveData: {
             message: `No matches in progress, come back later!`
+          },
+          first_half: {
+            message: `1st Half`
+          },
+          second_half: {
+            message: `2nd Half`
+          },
+          half_time: {
+            message: `Half Time`
+          },
+          goBack: {
+            message: `Back`
+          },
+          statText: {
+            message: 'Statistics'
+          }, possession: {
+            message: "Possession"
+          }, totalAttempt: {
+            message: "Total attemps"
+          }, sont: {
+            message: "Shots on target"
+          }, soft: {
+            message: "Shots off target"
+          }, penalties: {
+            message: "Penalties"
+          }, yc: {
+            message: "Yellow cards"
+          }, rc: {
+            message: "Red cards"
+          }, fouls: {
+            message: "Fouls"
+          }, offsides: {
+            message: "Offsides"
+          }, corners: {
+            message: "Corners"
+          }, crosses: {
+            message: "Crosses"
+          }, throwins: {
+            message: "Throw in"
+          }, substitution: {
+            message: "Substitutions"
+          }, passes: {
+            message: "Passes"
           }
         },
       },
@@ -100,6 +143,49 @@ i18n
           },
           noLiveData: {
             message: `Aucun match en cours, revenez plus tard !`
+          },
+          first_half: {
+            message: `1er mi-temps`
+          },
+          second_half: {
+            message: `2de mi-temps`
+          },
+          half_time: {
+            message: `Mi-temps`
+          },
+          goBack: {
+            message: `Retour`
+          },
+          statText: {
+            message: 'Statistiques'
+          }, possession: {
+            message: "Possession"
+          }, totalAttempt: {
+            message: "Total de tir"
+          }, sont: {
+            message: "Tirs cadrés"
+          }, soft: {
+            message: "Tirs non cadrés"
+          }, penalties: {
+            message: "Penaltis"
+          }, yc: {
+            message: "Cartons jaune"
+          }, rc: {
+            message: "Cartons rouge"
+          }, fouls: {
+            message: "Fautes"
+          }, offsides: {
+            message: "Hors-jeu"
+          }, corners: {
+            message: "Corners"
+          }, crosses: {
+            message: "Coup-franc"
+          }, throwins: {
+            message: "Touches"
+          }, substitution: {
+            message: "Remplacements"
+          }, passes: {
+            message: "Passes"
           }
         },
       },

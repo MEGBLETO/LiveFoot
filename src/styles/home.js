@@ -23,7 +23,7 @@ export const Container = styled.View`
 `;
 
 export const StyledView = styled.View`
-  margin: 100px 10px 0px 10px;
+  margin: 100px 10px 80px 10px;
 `;
 
 export const StyledView3 = styled.View`
@@ -43,7 +43,8 @@ export const StyledText = styled.Text`
 export const Text2 = styled.Text`
   font-size: 16px;
   color: ${props => props.theme.textColor2};
-  margin-left: 10px;
+  margin-left: 15px;
+  margin-top: 3px;
 `;
 
 export const Text3 = styled.Text`
@@ -80,7 +81,7 @@ export const Image2 = styled.Image`
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 5px;
+  top: 6px;
   background-color: ${props => props.theme.backgroundColor3};
   border-radius: 10px;
 `;
@@ -93,4 +94,61 @@ export const Image3 = styled.Image`
   right: 6px;
   background-color: ${props => props.theme.backgroundColor3};
   border-radius: 10px;
+`;
+
+export const LoaderView = styled.View`
+  align-items: center;
+`;
+
+export const StyledStatText = styled.Text`
+  font-size: 18px;
+  margin-left: 10px;
+  color: ${props => props.theme.textColor};
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+`;
+
+export const StatDefaultBar = styled.View`
+  background: ${props => props.theme.textColor};
+  width: 38%;
+  height: 10px;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 4px;
+`;
+
+export const Home = styled.View`
+  height: 100%;
+  background: royalblue;
+  width: ${({size}) => size}%;
+  position: absolute;
+  right: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+`;
+
+export const Away = styled.View`
+  height: 100%;
+  background: royalblue;
+  width: ${({size}) => size}%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+`;
+export const StatLabel = styled.Text`
+  color: ${props => props.theme.textColor};
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 5px;
+`;
+
+export const StatValueLeft = styled.Text`
+  font-weight: bold;
+  font-style: italic;
+  color: ${props => props.theme.textColor};
+`;
+
+export const StatValueRight = styled(StatValueLeft)`
+  position: absolute;
+  right: 0;
 `;

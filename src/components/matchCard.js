@@ -17,10 +17,10 @@ import {
   CardContainer,
 } from '../styles/home';
 import {useSelector, useDispatch} from 'react-redux';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
-  const MatchCard = ({data}) => {
-    const {t, i18n} = useTranslation();
+const MatchCard = ({data, navigation}) => {
+  const {t, i18n} = useTranslation();
   const {language} = useSelector(state => state.languageReducer);
   const dispatch = useDispatch();
 
@@ -29,29 +29,23 @@ import { Text } from 'react-native';
   const [homeScore, setHomeScore] = useState(null);
   const [awayScore, setAwayScore] = useState(null);
   const [timeOfTheDay, setTimeOfTheDay] = useState(null);
+  const [gmt, setGmt] = useState(2);
 
 
   useEffect(() => {
-    if (
-      new Date(data.starting_at).getDate() < new Date().getDate() ||
-      new Date(data.starting_at).setTime(
-        new Date(data.starting_at).getTime() + 120 * 60 * 1000
-      ) <= new Date().getTime()
-    ) {
+    if (data.state.id === 5) {
       setStatus('Passed');
       formatPastDateToShow(new Date(data.starting_at));
       parseMatchSetScore(data.events);
-    } else if (new Date(data.starting_at).getTime() > new Date().getTime()) {
+    } else if (data.state.id === 1) {
       setStatus('To come');
       formatPostDateToShow(new Date(data.starting_at));
     } else if (
-      new Date(data.starting_at).getTime() < new Date().getTime() &&
-      new Date(data.starting_at).setTime(
-        new Date(data.starting_at).getTime() + 120 * 60 * 1000,
-      ) >= new Date().getTime()
+      data.state.id === 2 || data.state.id === 22 || data.state.id === 3
     ) {
       setStatus('Playing');
       formatActiveDateToShow(new Date(data.starting_at));
+      parseMatchSetScore(data.events);
     }
   }, [data, awayScore, homeScore, language]);
 
@@ -72,6 +66,13 @@ import { Text } from 'react-native';
   };
 
   const formatActiveDateToShow = date => {
+    if (data.state.short_name === '1st'){
+      setDateToShow(`${t('first_half.message')}`);
+    } else if (data.state.short_name === '2nd'){
+      setDateToShow(`${t('second_half.message')}`);
+    } else if (data.state.short_name === 'HT'){
+      setDateToShow(`${t('half_time.message')}`);
+    }
   };
 
   const formatPastDateToShow = (date) => {
@@ -85,7 +86,7 @@ import { Text } from 'react-native';
     let hours = dateToUse.getHours() < 10 ? `0${dateToUse.getHours()}` : dateToUse.getHours();
     let minutes = dateToUse.getMinutes() < 10 ? `0${dateToUse.getMinutes()}` : dateToUse.getMinutes();
 
-    hours = language === 'en' ? hours : setHoursInEn(hours);
+    hours = language === 'en' ? hours + gmt : setHoursInEn(hours + gmt);
 
     if (baseDate.getDate() === dateToUse.getDate()) {
       setDateToShow(`${t('playDateToday.message')} ${hours}:${minutes}`);
@@ -115,7 +116,7 @@ import { Text } from 'react-native';
     let hours = dateToUse.getHours() < 10 ? `0${dateToUse.getHours()}` : dateToUse.getHours();
     const minutes = dateToUse.getMinutes() < 10 ? `0${dateToUse.getMinutes()}` : dateToUse.getMinutes();
 
-    hours = language === 'en' ? hours : setHoursInEn(hours);
+    hours = language === 'en' ? hours + gmt : setHoursInEn(hours + gmt);
 
     if (baseDate.getDate() == dateToUse.getDate()) {
       setDateToShow(`${t('playDateToday.message')} ${hours}:${minutes}`);
@@ -177,7 +178,7 @@ import { Text } from 'react-native';
       default:
         toReturn = h;
     }
-    if (h >= 12){
+    if (h > 12){
       setTimeOfTheDay('PM');
     } else {
       setTimeOfTheDay('AM');
@@ -186,24 +187,25 @@ import { Text } from 'react-native';
     return toReturn;
   };
   return (
+
     <CardContainer>
       <Container>
         <Container>
-          <Image2 source={require('../images/ballon-foot.png')} />
+          <Image2 source={{uri: data && data.league.country.image_path}} />
           <Text2>
             {data && data.league.country.name} . {data && data.league.name}{' '}
           </Text2>
         </Container>
-        {/* <Container>
+        <Container>
           <Image2 source={require('../images/classement.png')} />
-        </Container> */}
+        </Container>
       </Container>
       {
         status === 'Playing' ? (
           <Container>
             <Container>
               {/* <Text3>27' 1ère mi-temps </Text3> */}
-              <Text3>{status}</Text3>
+              <Text3>{dateToShow}</Text3>
             </Container>
             <Container>
               <Image3 source={require('../images/streaming.png')} />

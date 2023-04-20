@@ -25,22 +25,22 @@ const Header = () => {
     dispatch(setThemeMode(!isDarkMode));
   };
 
-const upDateLanguage = () => {
-  if (language === 'fr') {
-    dispatch(setLanguage('en'));
-    i18n.changeLanguage(language);
-    console.log(language);
-  } else {
-    dispatch(setLanguage('fr'));
-    i18n.changeLanguage(language);
-    console.log(language);
-  }
-};
+  const upDateLanguage = () => {
+    if (language === 'fr') {
+      dispatch(setLanguage('en'));
+      i18n.changeLanguage(language);
+      console.log(language);
+    } else {
+      dispatch(setLanguage('fr'));
+      i18n.changeLanguage(language);
+      console.log(language);
+    }
+  };
 
-const buttonImage = language === 'fr'
-  ? require('../images/france.png')
-  : require('../images/royaume-uni.png');
-
+  const buttonImage =
+    language === 'fr'
+      ? require('../images/france.png')
+      : require('../images/royaume-uni.png');
 
   useEffect(() => {
     navigation.setOptions({

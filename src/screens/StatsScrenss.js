@@ -14,14 +14,6 @@ const StatsScrenss = () => {
   const dispatch = useDispatch();
   const {isDarkMode} = useSelector(state => state.themeReducer);
   const {t, i18n} = useTranslation();
-  const {language} = useSelector(state => state.languageReducer);
-
-  useEffect(() => {
-    navigation.setOptions({
-      headerTitle: '',
-      headerShown: false,
-    });
-  }, [navigation]);
 
   return (
     <ThemeProvider isDarkMode={isDarkMode}>
