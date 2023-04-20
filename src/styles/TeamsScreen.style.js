@@ -32,3 +32,9 @@ export const TeamName = styled.Text`
   text-align: center;
   color: #333;
 `;
+
+
+
+
+
+

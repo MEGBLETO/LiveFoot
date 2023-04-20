@@ -11,6 +11,7 @@ import {StyledText} from '../styles/test';
 import styled from 'styled-components/native';
 import {useRoute, useNavigation} from '@react-navigation/native';
 import axios from 'axios';
+import {Imagelangue} from '../styles/ComponentStyles/Header.style';
 
 export default function PlayersScreens() {
   const route = useRoute();
@@ -43,7 +44,7 @@ export default function PlayersScreens() {
         for (const player of players) {
           playerPromises.push(
             axios.get(
-              `https://api.sportmonks.com/v3/football/players/${player.player_id}?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py`,
+              `https://api.sportmonks.com/v3/football/players/${player.player_id}?api_token=CjDvBzmtKDVn3RWgPAzcaLUYoheYE6GFeXASUgjVnvLuwGSuW3QuFfrHi6py&include=country;position`,
             ),
           );
         }
@@ -84,6 +85,8 @@ export default function PlayersScreens() {
               <CardImage source={{uri: card?.image_path}} />
               <CardText>{card?.common_name}</CardText>
               <CustomText>{card?.date_of_birth}</CustomText>
+              <CustomText>{card?.position.name}</CustomText>
+              <Imagelangue source={{uri: card?.country.image_path}} />
             </Card>
           )}
           onSwiped={cardIndex => console.log('Card swiped: ', cardIndex)}
@@ -130,7 +133,6 @@ const CardText = styled.Text`
   font-size: 24px;
   margin-top: 16px;
 `;
-
 
 const CustomText = styled.Text`
   font-size: 10px;
