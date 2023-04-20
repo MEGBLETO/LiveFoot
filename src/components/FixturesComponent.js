@@ -48,7 +48,6 @@ const FixturesComponent = () => {
     dispatch(fetchfixtures());
   }, [dispatch]);
 
-
   // <FixtureItem onPress={()=> navigation.navigate('Details', {id: items.lineups[0].details.fixture_id})}>
 
   const renderItem = ({item}) => (
