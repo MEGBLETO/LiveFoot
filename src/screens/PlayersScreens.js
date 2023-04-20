@@ -114,7 +114,7 @@ const Card = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: gray;
+  background-color: white;
   border-radius: 8px;
   border-width: 2px;
   border-color: #e8e8e8;

@@ -18,8 +18,6 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name="Home" component={Home} /> */}
-        <Stack.Screen name="Homescreen" component={HomeScreen} />
         <Stack.Screen name="Main" component={MainPage} />
         <Stack.Screen name="Test" component={Test} />
         <Stack.Screen name="Live" component={LiveScreen} />

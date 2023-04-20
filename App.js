@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Routes from './src/config/routes';
 import {Provider} from 'react-redux';
 import {Store} from './src/redux/store';
 import styled, {ThemeProvider} from 'styled-components/native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
+import SplashScreen from 'react-native-splash-screen';
 
 const lightTheme = {
   backgroundColor: 'black',
@@ -19,6 +20,10 @@ const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const theme = isDarkMode ? darkTheme : lightTheme;
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, [])
 
 
   return (

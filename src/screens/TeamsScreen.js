@@ -8,6 +8,13 @@ import styled from 'styled-components/native';
 import ThemeProvider from '../components/ThemeProvider';
 import Header from '../components/header';
 import BottomNavigation from '../components/BottomNavigation';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+
+
+
+
+
+const adUnitId =  TestIds.BANNER;
 
 const TeamsScreen = () => {
   const navigation = useNavigation();
@@ -83,6 +90,14 @@ const TeamsScreen = () => {
   return (
     <ThemeProvider isDarkMode={isDarkMode}>
       <Header />
+
+      <BannerAd
+          unitId={adUnitId}
+          size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+          requestOptions={{
+            requestNonPersonalizedAdsOnly: true,
+          }}
+        />
       <StyledFlatList
         data={formatData(teams, numColumns)}
         renderItem={({ item }) => (
