@@ -28,7 +28,14 @@ Deuxieme Date: 20/04/2023
 -un sélecteur qui permet d'afficher les matchs d'une période définie
 -ajout de publicité
 
+Liens des vidéos YouTube:
 
+Vidéo 1: https://youtu.be/qnCVxc8fBEM
+Vidéo 2: https://youtube.com/shorts/ws0_CcK7acE
+
+Rq: La deuxième vidéo c'est pour visualiser la page Live lorsqu'il y a
+au-moins un match en cours. Car dans la première vidéo, aucun match n'était
+en cours pendant l'enregistrement de vidéo en question.
 
 
 
