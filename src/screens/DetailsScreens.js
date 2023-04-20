@@ -39,7 +39,6 @@ const getStat = statistics => {
       awayToSet[x.type.code] = x.data.value;
     });
 
-    console.log(homeToSet);
     setAwayStat(awayToSet);
     setHomeStat(homeToSet);
 

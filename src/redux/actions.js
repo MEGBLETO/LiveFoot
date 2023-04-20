@@ -36,7 +36,6 @@ export const fetchfixtures = (currentPage) => {
         payload: sortData,
       });
     } catch (error) {
-      console.log(error);
     }
   };
 };

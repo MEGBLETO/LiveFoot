@@ -53,10 +53,8 @@ export default function PlayersScreens() {
 
         setPlayersidCard(filteredPlayersData);
 
-        console.log(filteredPlayersData);
       }
     } catch (error) {
-      console.log(error);
     }
   };
 
@@ -87,8 +85,6 @@ export default function PlayersScreens() {
               <Imagelangue source={{uri: card?.country.image_path}} />
             </Card>
           )}
-          onSwiped={cardIndex => console.log('Card swiped: ', cardIndex)}
-          onSwipedAll={() => console.log('All cards swiped')}
           cardIndex={0}
           backgroundColor={isDarkMode ? '#000000' : '#FFF'}
           stackSize={3}

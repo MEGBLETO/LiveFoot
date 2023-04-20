@@ -38,7 +38,6 @@ const LiveScreen = () => {
   useEffect(() => {
     fetchData();
     // const interval2 = setInterval(() => {
-    //   console.log('fetch');
     //   fetchData();
     // }, 7000);
 

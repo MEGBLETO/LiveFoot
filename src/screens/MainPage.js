@@ -95,7 +95,6 @@ const MainPage = () => {
       );
       return res.data.data;
     } catch (error) {
-      console.log(error);
     }
   }
   const renderItem = ({item}) => {
