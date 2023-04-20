@@ -1,4 +1,7 @@
 {
   "name": "livefootball",
-  "displayName": "livefootball"
+  "displayName": "livefootball",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-7264657954283772~5399401763"
+  }
 }

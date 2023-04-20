@@ -15,6 +15,14 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLanguage } from '../redux/actions';
 
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+
+
+
+
+
+const adUnitId =  TestIds.BANNER;
+
 
 
 

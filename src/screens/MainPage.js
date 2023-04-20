@@ -12,6 +12,17 @@ import {useTranslation} from 'react-i18next';
 import ThemeProvider from '../components/ThemeProvider';
 import MatchCard from '../components/matchCard';
 import {fetchfixtures} from '../redux/actions';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+
+
+
+
+
+const adUnitId = TestIds.BANNER ;
+
+
+
+
 
 const StyledScrollView = styled.ScrollView`
   position: relative;
@@ -78,6 +89,13 @@ const MainPage = () => {
     // </PagecontainerWhite>
     <ThemeProvider isDarkMode={isDarkMode}>
       <Header />
+      <BannerAd
+      unitId={adUnitId}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+      }}
+    />
       <StyledView2>
         <StyledView>
           <FlatList
