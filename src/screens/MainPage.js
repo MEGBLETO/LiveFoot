@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {useNavigation} from '@react-navigation/native';
@@ -11,7 +10,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import ThemeProvider from '../components/ThemeProvider';
 import MatchCard from '../components/matchCard';
-import {fetchfixtures} from '../redux/actions';
+import { Text } from 'react-native';
 import {BannerAd, BannerAdSize, TestIds} from 'react-native-google-mobile-ads';
 
 const adUnitId = TestIds.BANNER;
@@ -37,26 +36,17 @@ const MainPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   async function onDisplayNotification() {
-    // Request permissions (required for iOS)
     await notifee.requestPermission();
-
-    // Create a channel (required for Android)
     const channelId = await notifee.createChannel({
       id: 'default',
       name: 'Default Channel',
     });
 
-    // Display a notification
     await notifee.displayNotification({
       title: 'LiveFoot',
       body: `${t('welcome.message')}`,
       android: {
         channelId,
-        // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
-        // // pressAction is needed if you want the notification to open the app when pressed
-        // pressAction: {
-        //   id: 'default',
-        // },
       },
     });
   }
@@ -84,10 +74,12 @@ const MainPage = () => {
   const renderLoader = () => {
     return isLoading ? (
       <LoaderView>
-        <ActivityIndicator size="large" color="#3a3955" />
+        <ActivityIndicator size="large" color="blue" animating={true} hidesWhenStopped={true} />
+        <Text style={{ color: "blue", marginTop: 10 }}>Loading...</Text>
       </LoaderView>
     ) : null;
   };
+
 
   const loadMoreItems = () => {
     setCurrentPage(currentPage + 1);
@@ -95,11 +87,10 @@ const MainPage = () => {
 
   async function fetchData(current = currentPage) {
     setIsLoading(true);
-    let startDate = new Date(new Date().setDate(new Date().getDate() - 4));
+    let startDate = new Date(new Date().setDate(new Date().getDate() - 2));
     let endDate = new Date(new Date().setDate(startDate.getDate() + 3));
     try {
       const res = await axios.get(
-        // eslint-disable-next-line prettier/prettier
           `https://api.sportmonks.com/v3/football/fixtures/between/${formatDate(startDate)}/${formatDate(endDate)}?api_token=8hLDCAjFKrGgNrCuyeGxfsie7nXX4jaW8hCrVi75165ef2V5c1bhG2lqhO18&include=statistics;statistics.type;participants;league;league.country;lineups.type;lineups.position;lineups.details;lineups;events;events.type;state;events.participant&page=${current}`
       );
       return res.data.data;

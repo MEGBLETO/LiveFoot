@@ -24,17 +24,8 @@ import { setLanguage } from '../redux/actions';
 const HomeScreen = () => {
   const {t, i18n} = useTranslation()
   const {language} = useSelector(state => state.languageReducer)
-  // const dispatch = useDispatch()
 
   const navigation = useNavigation();
-
-
-
-  // useEffect(()=>{
-  //   i18n.changeLanguage(language)
-
-  // },[language])
-
 
   useEffect(() => {
     navigation.setOptions({
@@ -52,9 +43,7 @@ const HomeScreen = () => {
             {t('welcome.message')}
           </StyledWelcomeText>
         </MessageContainer>
-
         <StyleTouchableIcon onPress={() => navigation.navigate('Main')}>
-            {/* <ChevronDoubleRightIcon size={20}/> */}
         </StyleTouchableIcon>
       </StyledImageBackground>
     </PagecontainerGray>

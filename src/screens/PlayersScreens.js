@@ -1,13 +1,11 @@
 import {View, Text, Image} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import BottomNavigation from '../components/BottomNavigation';
-import {StyledView2} from '../styles/home';
 import ThemeProvider from '../components/ThemeProvider';
 import Header from '../components/header';
 import {useDispatch, useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import Swiper from 'react-native-deck-swiper';
-import {StyledText} from '../styles/test';
 import styled from 'styled-components/native';
 import {useRoute, useNavigation} from '@react-navigation/native';
 import axios from 'axios';
@@ -96,7 +94,7 @@ export default function PlayersScreens() {
           stackSize={3}
         />
       ) : (
-        <Text>Loading....</Text>
+        <Text>Loading...</Text>
       )}
       <BottomNavigation
         main="white"
@@ -110,14 +108,14 @@ export default function PlayersScreens() {
 
 const Container = styled.View`
   flex: 1;
-  background-color: green;
+  background-color: ${props => props.theme.backgroundColor};
 `;
 
 const Card = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: ${props => props.theme.backgroundColor};
   border-radius: 8px;
   border-width: 2px;
   border-color: #e8e8e8;
@@ -126,15 +124,20 @@ const Card = styled.View`
 const CardImage = styled(Image)`
   width: 50%;
   height: 30%;
-  resize-mode: cover;
+  /* resize-mode: cover; */
 `;
 
 const CardText = styled.Text`
   font-size: 24px;
   margin-top: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: ${props => props.theme.textColor};
 `;
 
 const CustomText = styled.Text`
-  font-size: 10px;
+  font-size: 13px;
   margin-top: 16px;
+  letter-spacing: 2px;
+  color: ${props => props.theme.textColor};
 `;

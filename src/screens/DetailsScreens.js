@@ -79,7 +79,6 @@ const getStat = statistics => {
 
                   <StatDetailBlock text={`${t('soft.message')}`} homeValue={homeStat['shots-off-target']} awayValue={awayStat['shots-off-target']}  homeWidth={homeStat['shots-off-target'] * 100 / (homeStat['shots-off-target'] + awayStat['shots-off-target'])} awayWidth={awayStat['shots-off-target'] * 100 / (homeStat['shots-off-target'] + awayStat['shots-off-target'])}/>
 
-
                   <StatDetailBlock text={`${t('penalties.message')}`} homeValue={homeStat.penalties} awayValue={awayStat.penalties}  homeWidth={homeStat.penalties * 100 / (homeStat.penalties + awayStat.penalties)} awayWidth={awayStat.penalties * 100 / (homeStat.penalties + awayStat.penalties)}/>
 
                   <StatDetailBlock text={`${t('yc.message')}`} homeValue={homeStat.yellowcards} awayValue={awayStat.yellowcards}  homeWidth={homeStat.yellowcards * 100 / (homeStat.yellowcards + awayStat.yellowcards)} awayWidth={awayStat.yellowcards * 100 / (homeStat.yellowcards + awayStat.yellowcards)}/>

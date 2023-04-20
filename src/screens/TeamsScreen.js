@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -8,13 +8,8 @@ import styled from 'styled-components/native';
 import ThemeProvider from '../components/ThemeProvider';
 import Header from '../components/header';
 import BottomNavigation from '../components/BottomNavigation';
-import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+import { TestIds } from 'react-native-google-mobile-ads';
 import {StyledView, StyledView2, LoaderView} from '../styles/home';
-
-
-
-
-
 
 const adUnitId =  TestIds.BANNER;
 
@@ -57,7 +52,6 @@ const TeamsScreen = () => {
 
 
   useEffect(()=>{
-    // console.log(players)
   }, [players])
 
   useEffect(() => {
@@ -72,7 +66,7 @@ const TeamsScreen = () => {
       <TeamItem key={item.id}>
         <TouchableOpacity onPress={() => navigation.navigate('players', {teamName: item.name})}>
           <TeamImage source={{ uri: item.image_path }} />
-        <TeamName>{item.name}</TeamName>
+          <TeamName>{item.name}</TeamName>
         </TouchableOpacity>
       </TeamItem>
     );
@@ -92,14 +86,6 @@ const TeamsScreen = () => {
   return (
     <ThemeProvider isDarkMode={isDarkMode}>
       <Header />
-
-      {/* <BannerAd
-          unitId={adUnitId}
-          size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
-          requestOptions={{
-            requestNonPersonalizedAdsOnly: true,
-          }}
-        /> */}
       <StyledView2>
         <StyledView>
           <StyledFlatList
@@ -151,5 +137,5 @@ const TeamName = styled.Text`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  color: #333;
+  color: ${props => props.theme.textColor};
 `;
